@@ -1,0 +1,54 @@
+<%-include('layouts/boilerplate.ejs') %> 
+<div class="alltours">
+    <header class="header" id="alltours-header">
+        <div class="header__logo-box">
+            <img src="../img/logo-white.png" alt="Logo" class="header__logo">
+        </div>
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--main">All tours</span>
+            </h1>
+        </div>           
+    </header>  
+    <div class="u-margin-top-big">
+        <% for(let i=0; i< 10; i++){ %> 
+            <div class="row">
+                <% let count = 1 %>
+                <% while(count <=3){ %>  
+                    <div class="col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--<%= count %> ">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--<%= count %> "><%=tours[0].name %> </span>    
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <% for(let i = 0; i < tours[0].description.length; i++){  %> 
+                                            <li><%= tours[0].description[i] %> </li>
+                                        <% } %> 
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-<%= count %>">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">Only</p>
+                                        <p class="card__price-value">$<%= tours[0].price %> </p>
+                                    </div>
+                                    <a href="#popup" class="btn btn--white">Book now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% count +=1 %> 
+                    <% tours.shift() %> 
+                <% } %> 
+            </div>
+        <% } %> 
+    </div>
+</div>
+
+<%- include('partials/footer') %> 

@@ -1,0 +1,57 @@
+<%-include('layouts/boilerplate.ejs') %> 
+<section class="section-stories">
+    <div class="bg-video">
+        <video class="bg-video__content" autoplay muted loop>
+            <source src="../img/video.mp4" type="video/mp4">
+            <source src = "img/video.webm" type="video/webm">
+            Your browser is not supported!
+        </video>
+    </div>
+    <div class="u-center-text u-margin-bottom-big">
+        <h2 class="heading-secondary">Stories from our customer</h2>
+    </div>
+    <% for(let story of stories){ %> 
+        <div class="row">
+            <div class="story">
+                <figure class="story__shape">
+                    <img src="<%= story.author.image %> " alt="person on a tour" class="story__img">
+                    <figcaption class="story__caption">
+                       <%= story.author.fullname %> 
+                    </figcaption>
+                </figure>
+                <div class="story__text">
+                    <h3 class="heading-tertiary u-margin-bottom-small"><%= story.header %> </h3>
+                    <p>
+                        <%= story.content %> 
+                    </p>
+                </div>
+                <a href="#popup" class="btn-text">Share your story</a>
+            </div>
+        </div>
+    <% } %> 
+</section>
+<div class="popup" id="popup">
+    <div class="popup__content" id="popup__story">
+        <div class="popup__left">
+            <img src="../img/nat-8.jpg" alt="tour photo" class="popup__img">
+            <img src="../img/nat-9.jpg" alt="tour photo" class="popup__img">
+        </div>
+        <div class="popup__right">
+            <a href="#section-tours" class="popup__close">&times;</a>
+            <h2 class="heading-secondary u-margin-bottom-small">Your story</h2>
+            <form action="/stories" method="POST">
+                <div class="form__group">
+                    <input type="text" class="form__input" id="header" placeholder="Title" name="header">
+                    <label for="header" class="form__label">Title</label>
+                  </div>
+                  <div class="form__group">
+                    <textarea class="form__input" id="content" rows="3" name="content" placeholder="Your Story"></textarea>
+                    <label for="content" class="form__label">Your Story</label>
+                  </div>
+                  <div class="form__group">
+                    <button class="btn btn--green">Add story</button>
+                  </div>                 
+            </form>
+        </div>
+    </div>
+</div>

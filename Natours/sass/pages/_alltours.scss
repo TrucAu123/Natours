@@ -1,0 +1,14 @@
+.alltours{
+    background-color: $color-grey-light-1;
+    position:relative;
+    padding-bottom: 3rem;
+    
+   #alltours-header{
+        height:50vh;
+        clip-path: polygon(0 0, 100% 0, 100% 40vh, 0 100%);
+        @include respond(phone){
+            clip-path: polygon(0 0, 100% 0, 100% 45vh, 0 100%);
+        }
+    }
+   
+}
